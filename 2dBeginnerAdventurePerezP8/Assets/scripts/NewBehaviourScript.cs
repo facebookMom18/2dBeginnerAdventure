@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public object Rigidbody2d { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,11 +18,11 @@ public class NewBehaviourScript : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector2 position = transform.position;
+        Vector2 position = Rigidbody2d.position;
         position.x = position.x + 5.0f * horizontal * Time.deltaTime;
         position.y = position.y + 5.0f * vertical * Time.deltaTime;
-        
-        transform.position = position;
+
+        rigidbody2d value = Rigidbody2d.MovePosition(position);
 
     }
 }
